@@ -1,5 +1,6 @@
 import 'package:ecommerce/constant.dart';
 import 'package:ecommerce/core/view_model/control_view_model.dart';
+import 'package:ecommerce/core/view_model/home_view_model.dart';
 import 'package:ecommerce/view/cart_view.dart';
 import 'package:ecommerce/view/widgets/custom_text.dart';
 import 'package:ecommerce/view/widgets/custome_sizedbox.dart';
@@ -15,50 +16,52 @@ final List<String> names = <String>[
 ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top:100,
-            left:20,
-            right: 20,
-          ),
-          child: Column(
-            children: [
-              _searchTextFormField(),
-              CustomSizedBox(
-                 height:30,
-              ),
-              CustomText(
-                text:'Categories',
-
-              ),
-              CustomSizedBox(
-                height:30,
-              ),
-              _listViewCategory(),
-              CustomSizedBox
-                (
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return GetBuilder <HomeViewModel>(
+      builder : (controller)=> Scaffold(
+        body: Container(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top:100,
+              left:20,
+              right: 20,
+            ),
+            child: Column(
               children: [
-                CustomText(text: 'Best Selling',
-                  fontSize: 18,
+                _searchTextFormField(),
+                CustomSizedBox(
+                   height:30,
                 ),
+                CustomText(
+                  text:'Categories',
 
-                CustomText(text: 'See all',
-                  fontSize: 18,
                 ),
+                CustomSizedBox(
+                  height:30,
+                ),
+                _listViewCategory(),
+                CustomSizedBox
+                  (
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomText(text: 'Best Selling',
+                    fontSize: 18,
+                  ),
 
+                  CustomText(text: 'See all',
+                    fontSize: 18,
+                  ),
+
+                ],
+                ),
+                CustomSizedBox(
+                  height: 20,
+                ),
+                _listViewProduct(),
               ],
-              ),
-              CustomSizedBox(
-                height: 20,
-              ),
-              _listViewProduct(),
-            ],
+            ),
           ),
         ),
       ),
