@@ -1,9 +1,7 @@
 import 'package:ecommerce/core/view_model/auth_view_model.dart';
 import 'package:ecommerce/core/view_model/control_view_model.dart';
+import 'package:ecommerce/core/view_model/home_view_model.dart';
 import 'package:ecommerce/view/auth/login_screen.dart';
-import 'package:ecommerce/view/cart_view.dart';
-import 'package:ecommerce/view/home_views.dart';
-import 'package:ecommerce/view/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +13,7 @@ class ControllView extends GetWidget<AuthViewModel> {
 
       return (Get.find<AuthViewModel>().user ==null)
           ?LoginScreen()
-          :GetBuilder<HomeViewModel>(
+          :GetBuilder<ControllViewModel>(
         builder: (controller)=>Scaffold(body:controller.currentScreen ,
         bottomNavigationBar: bottomNavigationBar(),
 
@@ -26,8 +24,8 @@ class ControllView extends GetWidget<AuthViewModel> {
 
   }
   Widget bottomNavigationBar() {
-    return GetBuilder <HomeViewModel>(
-      init: HomeViewModel (),
+    return GetBuilder <ControllViewModel>(
+      init: ControllViewModel (),
       builder: (controller) => BottomNavigationBar(
         items:[
           BottomNavigationBarItem(
