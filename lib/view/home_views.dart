@@ -85,36 +85,38 @@ final List<String> names = <String>[
     );
   }
   Widget _listViewCategory(){
-    return  Container(
-      height: 100,
-      child: ListView.separated(
-        itemCount: names.length,
-        scrollDirection: Axis.horizontal,
-        itemBuilder:(context ,index){
-          return Column(
-            children: [
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Colors.grey.shade100
-                  ),
-                  height: 60,
-                  width: 60,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset('assets/images/Icon_Mens Shoe.png'),
-                  ),
+    return  GetBuilder <HomeViewModel>(
+      builder:(controller) => Container(
+        height: 100,
+        child: ListView.separated(
+          itemCount: controller.categoryMddel.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder:(context ,index){
+            return Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.grey.shade100
+                    ),
+                    height: 60,
+                    width: 60,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.network(controller.categoryMddel[index].image),
+                    ),
 
+                  ),
                 ),
-              ),
-              SizedBox(height: 20),
-              CustomText(text: names[index]),
-            ],
-          );
-        }, separatorBuilder: ( context, int index) => CustomSizedBox(
-        width: 20,
-      ),
+                SizedBox(height: 20),
+                CustomText(text:controller.categoryMddel[index].name),
+              ],
+            );
+          }, separatorBuilder: ( context, int index) => CustomSizedBox(
+          width: 20,
+        ),
+        ),
       ),
     );
 
