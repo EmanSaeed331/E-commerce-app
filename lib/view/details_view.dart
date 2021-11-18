@@ -1,9 +1,12 @@
 import 'package:ecommerce/constant.dart';
+import 'package:ecommerce/core/view_model/cart_view_model.dart';
+import 'package:ecommerce/model/carrt_product_model.dart';
 import 'package:ecommerce/model/product_model.dart';
 import 'package:ecommerce/view/widgets/custom_button.dart';
 import 'package:ecommerce/view/widgets/custom_text.dart';
 import 'package:ecommerce/view/widgets/custome_sizedbox.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class DetailsView extends StatelessWidget {
   ProductModel model;
@@ -138,15 +141,31 @@ class DetailsView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Container(
-                        width: 130,
-                        height: 50,
-                        child: CustomButton(
-                          text: 'Add ',
-                          onPress: (){},
+                    GetBuilder <CartViewModel>(
+                      init:CartViewModel(),
+                      builder:(controller) =>
+                       Container(
+                        child: Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Container(
+                            width: 130,
+                            height: 50,
+                            child: CustomButton(
+                              text: 'Add ',
+                              onPress: (){
+                                controller.addProduct(
+                                    CartProductModel(
+                                  name:model.name,
+                                  image: model.image,
+                                  price: model.price,
+                                  quantity: 1
+                                    )
+                                );
 
+                              },
+
+                            ),
+                          ),
                         ),
                       ),
                     ),
