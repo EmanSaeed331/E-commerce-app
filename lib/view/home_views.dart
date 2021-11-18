@@ -1,76 +1,74 @@
 import 'package:ecommerce/constant.dart';
 import 'package:ecommerce/core/view_model/control_view_model.dart';
 import 'package:ecommerce/core/view_model/home_view_model.dart';
-import 'package:ecommerce/view/cart_view.dart';
+import 'package:ecommerce/view/details_view.dart';
 import 'package:ecommerce/view/widgets/custom_text.dart';
 import 'package:ecommerce/view/widgets/custome_sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeView extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeViewModel>(
+      init: Get.find(),
       builder: (controller) => controller.loading.value
           ? Center(child: CircularProgressIndicator())
           : Scaffold(
-              body:
-                 Container(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 100,
-                      left: 20,
-                      right: 20,
-                    ),
-                    child: Expanded(
-                      child: Column(
-                        children: [
-                          _searchTextFormField(),
-                          CustomSizedBox(
-                            height: 20,
-                          ),
-                          CustomText(
-                            text: 'Categories',
-                          ),
-                          CustomSizedBox(
-                            height: 20,
-                          ),
-                          _listViewCategory(),
-                          CustomSizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              CustomText(
-                                text: 'Best Selling',
-                                fontSize: 18,
-                              ),
-                              CustomText(
-                                text: 'See all',
-                                fontSize: 18,
-                              ),
-                            ],
-                          ),
-                          CustomSizedBox(
-                            height: 10,
-                          ),
-                          _listViewProduct(),
-                        ],
-                      ),
+              body: Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: 100,
+                    left: 20,
+                    right: 20,
+                  ),
+                  child: Expanded(
+                    child: Column(
+                      children: [
+                        _searchTextFormField(),
+                        CustomSizedBox(
+                          height: 20,
+                        ),
+                        CustomText(
+                          text: 'Categories',
+                        ),
+                        CustomSizedBox(
+                          height: 20,
+                        ),
+                        _listViewCategory(),
+                        CustomSizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CustomText(
+                              text: 'Best Selling',
+                              fontSize: 18,
+                            ),
+                            CustomText(
+                              text: 'See all',
+                              fontSize: 18,
+                            ),
+                          ],
+                        ),
+                        CustomSizedBox(
+                          height: 10,
+                        ),
+                        _listViewProduct(),
+                      ],
                     ),
                   ),
                 ),
               ),
-
+            ),
     );
   }
 
   Widget _searchTextFormField() {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: Colors.grey.shade200),
+          borderRadius: BorderRadius.circular(20), color: Colors.grey.shade100),
       child: TextFormField(
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -118,7 +116,7 @@ class HomeView extends StatelessWidget {
   }
 
   Widget _listViewProduct() {
-    return GetBuilder <HomeViewModel>(
+    return GetBuilder<HomeViewModel>(
       builder: (controller) => Expanded(
         child: Container(
           height: 350,
@@ -126,39 +124,42 @@ class HomeView extends StatelessWidget {
             itemCount: controller.productModel.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return
-                Column(
-                  children: [
-                    Container(
+              return Column(
+                children: [
+                  GestureDetector(
+                    onTap: (){
+                      Get.to(DetailsView(
+                        model: controller.productModel[index],
+
+                      ));
+                    },
+                    child: Container(
                       width: MediaQuery.of(context).size.width * .4,
                       child: Image.network(
                         controller.productModel[index].image,
                         fit: BoxFit.fill,
                       ),
                     ),
-                    SizedBox(height: 3),
-                    CustomText(
-                      text: controller.productModel[index].name,
-                      alignment: Alignment.bottomLeft,
-                    ),
-                    SizedBox(height: 3),
-                    CustomText(
-
-                      text: controller.productModel[index].description,
-                      alignment: Alignment.bottomLeft,
-                      maxLine: 1 ,
-
-                      color: Colors.grey,
-                    ),
-                    SizedBox(height: 3),
-                    CustomText(
-
-                      color: PrimaryColor,
-                      text: controller.productModel[index].price,
-                      alignment: Alignment.bottomLeft,
-                    ),
-                  ],
-
+                  ),
+                  SizedBox(height: 3),
+                  CustomText(
+                    text: controller.productModel[index].name,
+                    alignment: Alignment.bottomLeft,
+                  ),
+                  SizedBox(height: 3),
+                  CustomText(
+                    text: controller.productModel[index].description,
+                    alignment: Alignment.bottomLeft,
+                    maxLine: 1,
+                    color: Colors.grey,
+                  ),
+                  SizedBox(height: 3),
+                  CustomText(
+                    color: PrimaryColor,
+                    text: controller.productModel[index].price,
+                    alignment: Alignment.bottomLeft,
+                  ),
+                ],
               );
             },
             separatorBuilder: (context, int index) => CustomSizedBox(

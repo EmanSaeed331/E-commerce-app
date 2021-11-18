@@ -53,3 +53,8 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/fonts/
+  fonts:
+    - family: SourceSans
+      fonts:
+        - asset: assets/fonts/SourceSansPro.ttf
