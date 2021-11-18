@@ -158,7 +158,8 @@ class DetailsView extends StatelessWidget {
                                   name:model.name,
                                   image: model.image,
                                   price: model.price,
-                                  quantity: 1
+                                  quantity: 1,
+                                      productId: model.productId
                                     )
                                 );
 

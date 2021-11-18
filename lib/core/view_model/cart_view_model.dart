@@ -20,10 +20,24 @@ class CartViewModel extends GetxController {
       _loading.value =false;
       update();
   }
-  addProduct (CartProductModel cartProductModel) async
-  {
+  addProduct (CartProductModel cartProductModel) async {
+  if(_cartProductMode.length == 0 ){
     var  dbHelper = CartDataBaseHelper.db;
     await dbHelper.insert(cartProductModel);
+  }
+  else{
+    for(int i = 0 ; i<_cartProductMode.length ; i++){
+      if(_cartProductMode[i].productId == cartProductModel.productId){
+        return;
+      }
+      else{
+        var  dbHelper = CartDataBaseHelper.db;
+        await dbHelper.insert(cartProductModel);
+      }
+  }
+
+  }
+
     update();
   }
 
