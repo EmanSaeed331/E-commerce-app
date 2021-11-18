@@ -17,7 +17,7 @@ final List<String> names = <String>[
   @override
   Widget build(BuildContext context) {
     return GetBuilder <HomeViewModel>(
-      builder : (controller)=> Scaffold(
+      builder : (controller)=>controller.loading.value ? Center(child: CircularProgressIndicator()) : Scaffold(
         body: Container(
           child: Padding(
             padding: const EdgeInsets.only(
