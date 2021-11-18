@@ -6,11 +6,18 @@ class CustomText extends StatelessWidget {
   final double fontSize;
   final Color color;
   final Alignment alignment;
+  final int maxLine;
+  final int width;
   CustomText({
     this.alignment = Alignment.topLeft,
     this.text =' ',
     this.fontSize= 16.0,
-    this.color = Colors.black});
+    this.color = Colors.black,
+    this.maxLine ,
+    this.width,
+
+
+  });
 
   @override
   Widget build(BuildContext context) {
