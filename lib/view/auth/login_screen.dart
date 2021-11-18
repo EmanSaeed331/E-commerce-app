@@ -87,7 +87,7 @@ final GlobalKey <FormState> _formKey = GlobalKey<FormState>() ;
                 ),
               CustomSizedBox(height: 15,),
                 CustomButton(
-                  onPressed: (){
+                  onPress: (){
                     _formKey.currentState.save();
                     controller.SignInWithEmailAndPassword();
 

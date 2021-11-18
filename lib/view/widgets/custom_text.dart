@@ -7,7 +7,8 @@ class CustomText extends StatelessWidget {
   final Color color;
   final Alignment alignment;
   final int maxLine;
-  final int width;
+  final double width;
+  final double height;
   CustomText({
     this.alignment = Alignment.topLeft,
     this.text =' ',
@@ -15,6 +16,7 @@ class CustomText extends StatelessWidget {
     this.color = Colors.black,
     this.maxLine ,
     this.width,
+    this.height=1,
 
 
   });
@@ -28,6 +30,7 @@ class CustomText extends StatelessWidget {
           style: TextStyle(
             color: color,
             fontSize: fontSize,
+            height: height ,
 
           ),
        ),

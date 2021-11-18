@@ -88,7 +88,7 @@ class RegisterView extends GetWidget<AuthViewModel> {
 
                 CustomSizedBox(height: 15,),
                 CustomButton(
-                  onPressed: (){
+                  onPress: (){
                     _formKey.currentState.save();
                     controller.createEmailandPassword();
 
