@@ -9,6 +9,8 @@ class CustomText extends StatelessWidget {
   final int maxLine;
   final double width;
   final double height;
+  final overflow;
+  final textDirection ;
   CustomText({
     this.alignment = Alignment.topLeft,
     this.text =' ',
@@ -17,6 +19,8 @@ class CustomText extends StatelessWidget {
     this.maxLine ,
     this.width,
     this.height=1,
+    this.overflow  =  TextOverflow.ellipsis,
+    this.textDirection = TextDirection.ltr ,
 
 
   });
@@ -31,6 +35,7 @@ class CustomText extends StatelessWidget {
             color: color,
             fontSize: fontSize,
             height: height ,
+              overflow:overflow,
 
           ),
        ),

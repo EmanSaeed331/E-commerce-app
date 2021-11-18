@@ -125,6 +125,9 @@ class HomeView extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+
                 children: [
                   GestureDetector(
                     onTap: (){
@@ -148,10 +151,13 @@ class HomeView extends StatelessWidget {
                   ),
                   SizedBox(height: 3),
                   CustomText(
-                    text: controller.productModel[index].description,
+                    text: '''controller.productModel[index].description''',
                     alignment: Alignment.bottomLeft,
-                    maxLine: 1,
+                    maxLine: 2,
+                    width: 40,
                     color: Colors.grey,
+                    overflow: TextOverflow.ellipsis,
+
                   ),
                   SizedBox(height: 3),
                   CustomText(
