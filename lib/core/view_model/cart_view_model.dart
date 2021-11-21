@@ -27,35 +27,34 @@ class CartViewModel extends GetxController {
 
       update();
   }
-  addProduct (CartProductModel cartProductModel) async {
-  if(_cartProductModel.length == 0 ){
-    var  dbHelper = CartDataBaseHelper.db;
-    await dbHelper.insert(cartProductModel);
-  }
-  else{
-    for(int i = 0 ; i<_cartProductModel.length ; i++){
-      if(_cartProductModel[i].productId == cartProductModel.productId){
-        return;
-      }
-      else{
-        var  dbHelper = CartDataBaseHelper.db;
-        await dbHelper.insert(cartProductModel);
-      }
-  }
-
-  }
-
-    update();
-  }
-
   getTotalPrice(){
     for (int i =0 ; i<_cartProductModel.length ; i++) {
 
       _totalPrice +=(double.parse(_cartProductModel[i].price)
-        * _cartProductModel[i].quantity);
+          * _cartProductModel[i].quantity);
       print('priceeeeee+${_totalPrice}');
       update();
 
-      }
+    }
   }
+  addProduct (CartProductModel cartProductModel) async {
+
+    for(int i = 0 ; i<_cartProductModel.length ; i++){
+      if(_cartProductModel[i].productId == cartProductModel.productId){
+        return;
+      }
+
+  }
+    var  dbHelper = CartDataBaseHelper.db;
+    await dbHelper.insert(cartProductModel);
+    _cartProductModel.add(cartProductModel);
+
+    _totalPrice +=(double.parse(cartProductModel.price)
+        * cartProductModel.quantity);
+
+
+    update();
+  }
+
+
 }
