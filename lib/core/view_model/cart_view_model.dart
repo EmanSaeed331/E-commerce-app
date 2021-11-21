@@ -55,6 +55,15 @@ class CartViewModel extends GetxController {
 
     update();
   }
-
+  increaseQuatity(int index){
+    _cartProductModel[index].quantity++;
+    _totalPrice +=(double.parse(_cartProductModel[index].price));
+    update();
+  }
+  decreaseQuatity(int index){
+    _cartProductModel[index].quantity--;
+    _totalPrice -=(double.parse(_cartProductModel[index].price));
+    update();
+  }
 
 }

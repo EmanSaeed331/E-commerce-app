@@ -58,15 +58,22 @@ class CartView extends StatelessWidget {
                                 child: Row(
                                   mainAxisAlignment:MainAxisAlignment.center ,
                                   children: [
-                                    Icon(Icons.add,
-                                      color: Colors.black,
+                                    GestureDetector(
+                                      onTap:(){
+                                        controller.increaseQuatity(index);
+                                      },
+                                      child: Icon(Icons.add,
+                                        color: Colors.black,
+
+
+                                      ),
                                     ),
                                     CustomSizedBox(
                                       width: 20,
                                     ),
                                     CustomText(
                                       alignment: Alignment.center,
-                                      text: '1' ,
+                                      text: controller.cartProductModel[index].quantity.toString(),
                                       fontSize: 20,
                                       color: Colors.black,
                                     ),
@@ -74,12 +81,18 @@ class CartView extends StatelessWidget {
                                       width: 20,
                                     ),
 
-                                    Container(
-                                      padding: EdgeInsets.only(
-                                        bottom: 20
-                                      ),
-                                      child: Icon(Icons.minimize,
-                                        color: Colors.black,
+                                    GestureDetector(
+                                      onTap: (){
+                                        controller.decreaseQuatity(index);
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.only(
+                                          bottom: 20
+                                        ),
+
+                                        child: Icon(Icons.minimize,
+                                          color: Colors.black,
+                                        ),
                                       ),
                                     ),
 
