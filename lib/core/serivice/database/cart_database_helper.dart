@@ -1,5 +1,6 @@
 import 'package:ecommerce/constant.dart';
 import 'package:ecommerce/model/carrt_product_model.dart';
+import 'package:ecommerce/model/product_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -46,5 +47,12 @@ class CartDataBaseHelper {
         tableCartProduct,
         model.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+  updateProduct(CartProductModel model) async{
+    var dbClient = await database;
+    return await dbClient.update(tableCartProduct, model.toJson(),
+      where: '$columnProductId = ?' , whereArgs:[model.productId]);
+
+    
   }
 }

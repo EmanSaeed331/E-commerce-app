@@ -11,6 +11,7 @@ class CartViewModel extends GetxController {
   List<CartProductModel> get cartProductModel =>_cartProductModel;
   double get totalPrice => _totalPrice;
   double _totalPrice =0.0;
+  var dbHelper = CartDataBaseHelper.db;
   CartViewModel (){
 
     getAllProduct();
@@ -55,14 +56,16 @@ class CartViewModel extends GetxController {
 
     update();
   }
-  increaseQuatity(int index){
+  increaseQuatity(int index) async{
     _cartProductModel[index].quantity++;
     _totalPrice +=(double.parse(_cartProductModel[index].price));
+    await  dbHelper.updateProduct(_cartProductModel[index]);
     update();
   }
-  decreaseQuatity(int index){
+  decreaseQuatity(int index) async{
     _cartProductModel[index].quantity--;
     _totalPrice -=(double.parse(_cartProductModel[index].price));
+   await  dbHelper.updateProduct(_cartProductModel[index]);
     update();
   }
 
