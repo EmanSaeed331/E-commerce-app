@@ -7,27 +7,34 @@ class CartViewModel extends GetxController {
   ValueNotifier <bool> get  loadign => _loading ;
   ValueNotifier <bool> _loading = ValueNotifier(false);
 
-  List<CartProductModel> _cartProductMode = [];
-  List<CartProductModel> get cartProductModel =>_cartProductMode;
-  CartViewModel (){getAllProduct();}
+  List<CartProductModel> _cartProductModel = [];
+  List<CartProductModel> get cartProductModel =>_cartProductModel;
+  double get totalPrice => _totalPrice;
+  double _totalPrice =0.0;
+  CartViewModel (){
+
+    getAllProduct();
+  }
   getAllProduct() async {
       _loading.value = true;
       var dbHelper = CartDataBaseHelper.db;
-      _cartProductMode= await dbHelper.getAllProduct();
-      print('prokkdss+${_cartProductMode.length}');
+      _cartProductModel= await dbHelper.getAllProduct();
+      print('prokkdss+${_cartProductModel.length}');
 
 
       _loading.value =false;
+      getTotalPrice();
+
       update();
   }
   addProduct (CartProductModel cartProductModel) async {
-  if(_cartProductMode.length == 0 ){
+  if(_cartProductModel.length == 0 ){
     var  dbHelper = CartDataBaseHelper.db;
     await dbHelper.insert(cartProductModel);
   }
   else{
-    for(int i = 0 ; i<_cartProductMode.length ; i++){
-      if(_cartProductMode[i].productId == cartProductModel.productId){
+    for(int i = 0 ; i<_cartProductModel.length ; i++){
+      if(_cartProductModel[i].productId == cartProductModel.productId){
         return;
       }
       else{
@@ -41,4 +48,14 @@ class CartViewModel extends GetxController {
     update();
   }
 
+  getTotalPrice(){
+    for (int i =0 ; i<_cartProductModel.length ; i++) {
+
+      _totalPrice +=(double.parse(_cartProductModel[i].price)
+        * _cartProductModel[i].quantity);
+      print('priceeeeee+${_totalPrice}');
+      update();
+
+      }
+  }
 }

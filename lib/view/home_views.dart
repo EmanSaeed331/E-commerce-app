@@ -124,48 +124,53 @@ class HomeView extends StatelessWidget {
             itemCount: controller.productModel.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+              return Container(
+                width: MediaQuery.of(context).size.width * .4,
+                child: Column(
 
-                children: [
-                  GestureDetector(
-                    onTap: (){
-                      Get.to(DetailsView(
-                        model: controller.productModel[index],
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
 
-                      ));
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * .4,
-                      child: Image.network(
-                        controller.productModel[index].image,
-                        fit: BoxFit.fill,
+                  children: [
+                    GestureDetector(
+                      onTap: (){
+                        Get.to(DetailsView(
+                          model: controller.productModel[index],
+
+                        ));
+                      },
+                      child: Container(
+                       // width: 100,
+                         width: MediaQuery.of(context).size.width * .4,
+                        child: Image.network(
+                          controller.productModel[index].image,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: 3),
-                  CustomText(
-                    text: controller.productModel[index].name,
-                    alignment: Alignment.bottomLeft,
-                  ),
-                  SizedBox(height: 3),
-                  CustomText(
-                    text: '''controller.productModel[index].description''',
-                    alignment: Alignment.bottomLeft,
-                    maxLine: 2,
-                    width: 40,
-                    color: Colors.grey,
-                    overflow: TextOverflow.ellipsis,
+                    SizedBox(height: 3),
+                    CustomText(
+                      text: controller.productModel[index].name,
+                      alignment: Alignment.bottomLeft,
+                    ),
+                    SizedBox(height: 3),
+                    CustomText(
+                      text: '''controller.productModel[index].description''',
+                      alignment: Alignment.bottomLeft,
+                      maxLine: 2,
+                      width: 40,
+                      color: Colors.grey,
+                      overflow: TextOverflow.ellipsis,
 
-                  ),
-                  SizedBox(height: 3),
-                  CustomText(
-                    color: PrimaryColor,
-                    text: controller.productModel[index].price,
-                    alignment: Alignment.bottomLeft,
-                  ),
-                ],
+                    ),
+                    SizedBox(height: 3),
+                    CustomText(
+                      color: PrimaryColor,
+                      text: controller.productModel[index].price,
+                      alignment: Alignment.bottomLeft,
+                    ),
+                  ],
+                ),
               );
             },
             separatorBuilder: (context, int index) => CustomSizedBox(

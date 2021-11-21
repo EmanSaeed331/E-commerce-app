@@ -4,6 +4,7 @@ import 'package:ecommerce/view/widgets/custom_button.dart';
 import 'package:ecommerce/view/widgets/custom_text.dart';
 import 'package:ecommerce/view/widgets/custome_sizedbox.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class CartView extends StatelessWidget {
@@ -15,7 +16,7 @@ class CartView extends StatelessWidget {
         children: [
           Expanded(
             child: GetBuilder<CartViewModel>(
-              init:CartViewModel(),
+              init:Get.find(),
               builder : (controller) => Container(
                 child: ListView.separated(
                   itemBuilder: (context, index) {
@@ -44,7 +45,7 @@ class CartView extends StatelessWidget {
                                 ),
                                 CustomText(
                                   color: PrimaryColor,
-                                  text: '\$ ${controller.cartProductModel[index].price.toString()}',
+                                  text: '\$ ${controller.cartProductModel[index].price}',
 
                                 ),
                                 CustomSizedBox(
@@ -121,10 +122,13 @@ class CartView extends StatelessWidget {
                     CustomSizedBox(
                       height: 15,
                     ),
-                    CustomText(
-                      text: '\$ 2000',
-                      color:PrimaryColor,
-                      fontSize: 18,
+                    GetBuilder<CartViewModel>(
+                      init:Get.find(),
+                      builder:(controller) => CustomText(
+                        text: '\$ ${controller.totalPrice}',
+                        color:PrimaryColor,
+                        fontSize: 18,
+                      ),
                     ),
 
                   ],

@@ -1,4 +1,5 @@
 import 'package:ecommerce/core/helper/binding.dart';
+import 'package:ecommerce/core/view_model/cart_view_model.dart';
 import 'package:ecommerce/view/auth/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'view/controll_view.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  Get.put(CartViewModel());
   await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.white,
