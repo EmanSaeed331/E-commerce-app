@@ -1,4 +1,5 @@
 
+import 'package:ecommerce/core/helper/local_storage_data.dart';
 import 'package:ecommerce/core/serivice/firestore_user.dart';
 import 'package:ecommerce/model/user_model.dart';
 import 'package:ecommerce/view/controll_view.dart';
@@ -12,7 +13,7 @@ class AuthViewModel extends GetxController{
  GoogleSignIn _googleSignIn = GoogleSignIn(scopes:['email']);
  String email , password , name ;
   //GoogleSignIn _googleSignIn = GoogleSignIn();
-
+  LocalStorageData localStorageData =Get.find();
   FirebaseAuth _auth = FirebaseAuth.instance ;
   Rx<User> _user = Rxn<User>();
   String   get user=> _user.value?.email;
@@ -73,10 +74,17 @@ class AuthViewModel extends GetxController{
   }
   void SignInWithEmailAndPassword() async{
     try {
-     await _auth.signInWithEmailAndPassword(email: email, password: password).then((user) {
+     await _auth
+         .signInWithEmailAndPassword(email: email, password: password)
+         .then((user) async {
       // Get.to(ControllView());
-       SaveData(user);
-       Get.offAll(HomeView());
+       await FireStoreUser()
+           .getCurrentUser(user.user.uid)
+           .then((value) => setUser1(UserModel.fromJson(value.data()))
+       );
+
+       //SaveData(user);
+       Get.offAll(ControllView());
 ;       print(user);
      }).catchError((error){
        print(error.toString());
@@ -124,6 +132,8 @@ class AuthViewModel extends GetxController{
 
    ));
  }
-
+void setUser1 (UserModel userModel) async{
+    await localStorageData.Setuser(userModel);
+}
 
 }

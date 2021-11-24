@@ -21,7 +21,17 @@ class LocalStorageData extends GetxController{
     }
 
     }
+
+  Setuser(UserModel userModel) async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(CACHED_USER_DATA, json.encode(userModel.toJson()));
+  }
+  deleteUser() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+  }
     }
+
 
   
   _getUser () async{
@@ -31,12 +41,6 @@ class LocalStorageData extends GetxController{
     return UserModel.fromJson(json.decode(value));
 
   }
-  setUser(UserModel userModel) async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString(CACHED_USER_DATA, json.encode(userModel.toJson()));
-  }
-  deleteUser() async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.clear();
-  }
+
+
   //method 2 to get user data from local storage
