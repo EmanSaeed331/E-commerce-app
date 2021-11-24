@@ -1,4 +1,5 @@
 import 'package:ecommerce/core/view_model/profile_view_model.dart';
+import 'package:ecommerce/view/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class ProfileView extends StatelessWidget {
@@ -13,6 +14,7 @@ class ProfileView extends StatelessWidget {
           child: FlatButton(
             onPressed: (){
               controller.Signout();
+              Get.offAll(LoginScreen());
             },
 
             child: Text('SignOut'),

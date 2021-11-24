@@ -1,6 +1,7 @@
 
 import 'package:ecommerce/core/serivice/firestore_user.dart';
 import 'package:ecommerce/model/user_model.dart';
+import 'package:ecommerce/view/controll_view.dart';
 import 'package:ecommerce/view/home_views.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,10 @@ class AuthViewModel extends GetxController{
      accessToken: googleSignInAuthentication.accessToken,
    );
   print('Credintional '+'${credential}');
-   _auth.signInWithCredential(credential);
+   _auth.signInWithCredential(credential).then((user) {
+     SaveData(user);
+     Get.offAll(ControllView());
+   });
   }
 
 
@@ -57,7 +61,7 @@ class AuthViewModel extends GetxController{
       var user = await _auth.signInWithCredential(credential).then((user) async
       {
         SaveData(user);
-        Get.offAll(HomeView());
+        Get.offAll(ControllView());
       }
       );
       print(user);
@@ -70,7 +74,7 @@ class AuthViewModel extends GetxController{
   void SignInWithEmailAndPassword() async{
     try {
      await _auth.signInWithEmailAndPassword(email: email, password: password).then((user) {
-      // Get.to(HomeView());
+      // Get.to(ControllView());
        SaveData(user);
        Get.offAll(HomeView());
 ;       print(user);
