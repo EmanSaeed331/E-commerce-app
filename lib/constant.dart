@@ -9,3 +9,4 @@ final String columnProductId  = 'productId';
 
 
 const PrimaryColor = Color.fromRGBO(0, 197, 105, 1.0);
+String CACHED_USER_DATA = 'CACHED_USER_DATA';
