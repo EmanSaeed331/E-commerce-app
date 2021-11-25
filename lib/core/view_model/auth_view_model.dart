@@ -22,6 +22,11 @@ class AuthViewModel extends GetxController{
   void onInit() {
     super.onInit();
     _user.bindStream(_auth.authStateChanges());
+
+    if(_auth.currentUser != null){
+      getCurrentUserData(_auth.currentUser.uid);
+
+    }
   }
 
   @override
@@ -78,10 +83,7 @@ class AuthViewModel extends GetxController{
          .signInWithEmailAndPassword(email: email, password: password)
          .then((user) async {
       // Get.to(ControllView());
-       await FireStoreUser()
-           .getCurrentUser(user.user.uid)
-           .then((value) => setUser1(UserModel.fromJson(value.data()))
-       );
+       getCurrentUserData(user.user.uid);
 
        //SaveData(user);
        Get.offAll(ControllView());
@@ -131,6 +133,12 @@ class AuthViewModel extends GetxController{
      pic: '',
 
    ));
+ }
+ void getCurrentUserData(String uid) async {
+   await FireStoreUser()
+       .getCurrentUser( uid)
+       .then((value) => setUser1(UserModel.fromJson(value.data()))
+   );
  }
 void setUser1 (UserModel userModel) async{
     await localStorageData.Setuser(userModel);

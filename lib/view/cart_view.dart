@@ -1,5 +1,8 @@
 import 'package:ecommerce/constant.dart';
 import 'package:ecommerce/core/view_model/cart_view_model.dart';
+import 'package:ecommerce/view/auth/login_screen.dart';
+import 'package:ecommerce/view/check_out/checkout_view.dart';
+import 'package:ecommerce/view/delivery_time_view.dart';
 import 'package:ecommerce/view/widgets/custom_button.dart';
 import 'package:ecommerce/view/widgets/custom_text.dart';
 import 'package:ecommerce/view/widgets/custome_sizedbox.dart';
@@ -16,7 +19,7 @@ class CartView extends StatelessWidget {
     return  GetBuilder<CartViewModel>(
         init:Get.find(),
     builder : (controller) => Scaffold(
-      body: controller.cartProductModel.length ==0 ?
+      body: controller.cartProductModel.length == 0 ?
       Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -172,8 +175,11 @@ class CartView extends StatelessWidget {
                   padding: EdgeInsets.all(20),
                   width: 150,
                   child: CustomButton(
-                   onPress: (){ },
                     text: 'CHECKOUT',
+
+                    onPress: (){
+                     Get.to(() => CheckOutView());
+                   },
 
                   ),
                 ),
