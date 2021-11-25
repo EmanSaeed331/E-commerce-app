@@ -4,6 +4,8 @@ import 'package:ecommerce/view/widgets/custom_button.dart';
 import 'package:ecommerce/view/widgets/custom_text.dart';
 import 'package:ecommerce/view/widgets/custome_sizedbox.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/parser.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 
@@ -11,13 +13,32 @@ class CartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      body: Column(
+    return  GetBuilder<CartViewModel>(
+        init:Get.find(),
+    builder : (controller) => Scaffold(
+      body: controller.cartProductModel.length ==0 ?
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            'assets/images/cart_empty.svg',
+            width: 200 ,
+            height: 200,
+          ),
+          CustomSizedBox(
+            height: 20,
+          ),
+          CustomText(
+            alignment: Alignment.topCenter,
+            text: 'Empty Cart',
+            fontSize: 32,
+          ),
+        ],
+      )
+          : Column(
         children: [
           Expanded(
-            child: GetBuilder<CartViewModel>(
-              init:Get.find(),
-              builder : (controller) => Container(
+            child:Container(
                 child: ListView.separated(
                   itemBuilder: (context, index) {
                     return Container(
@@ -115,7 +136,7 @@ class CartView extends StatelessWidget {
                   },
                 ),
               ),
-            ),
+
           ),
           Padding(
             padding: const EdgeInsets.only(
@@ -161,6 +182,7 @@ class CartView extends StatelessWidget {
           ),
         ],
       ),
+    ),
     );
   }
 }
