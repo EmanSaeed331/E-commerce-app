@@ -1,4 +1,5 @@
 import 'package:ecommerce/core/helper/constance.dart';
+import 'package:ecommerce/core/helper/enum.dart';
 import 'package:ecommerce/view/controll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

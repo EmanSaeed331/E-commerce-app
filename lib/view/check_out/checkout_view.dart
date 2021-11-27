@@ -1,8 +1,10 @@
 import 'package:ecommerce/core/helper/constance.dart';
+import 'package:ecommerce/core/helper/enum.dart';
 import 'package:ecommerce/core/view_model/checkout_view_model.dart';
 import 'package:ecommerce/view/add_address_view.dart';
 import 'package:ecommerce/view/delivery_time_view.dart';
 import 'package:ecommerce/view/summary_view.dart';
+import 'package:ecommerce/view/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:status_change/status_change.dart';
@@ -109,18 +111,24 @@ class CheckOutView extends StatelessWidget {
               ? DeliveryTime()
               :controller.pages == Pages.AddAddress
               ? AddAddress()
-              : Summary()
+              : Summary(),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Container(
+              padding:EdgeInsets.all(20),
+              width: 200,
+              height: 100,
+              child: CustomButton(
+                text: 'Next',
+                 onPress: (){
+                controller.changeIndex(controller.index + 1);
+
+              }),
+            ),
+          ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.skip_next),
-        onPressed: () {
-          controller.changeIndex(controller.index + 1);
-     
 
-        },
-        backgroundColor: inProgressColor,
-      ),
     ),
     );
   }
