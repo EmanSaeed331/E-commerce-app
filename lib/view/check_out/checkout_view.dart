@@ -1,3 +1,4 @@
+import 'package:ecommerce/constant.dart';
 import 'package:ecommerce/core/helper/constance.dart';
 import 'package:ecommerce/core/helper/enum.dart';
 import 'package:ecommerce/core/view_model/checkout_view_model.dart';
@@ -112,19 +113,48 @@ class CheckOutView extends StatelessWidget {
               :controller.pages == Pages.AddAddress
               ? AddAddress()
               : Summary(),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Container(
-              padding:EdgeInsets.all(20),
-              width: 200,
-              height: 100,
-              child: CustomButton(
-                text: 'Next',
-                 onPress: (){
-                controller.changeIndex(controller.index + 1);
+          Row(
+            mainAxisAlignment:MainAxisAlignment.end ,
+            children: [
+           controller.index ==  0 ? Container()
+           : Align(
+                alignment: Alignment.bottomRight,
+                child: Container(
+                  padding:EdgeInsets.all(20),
+                  width: 180,
+                  height: 100,
+                  child: CustomButton(
+                    color:Colors.white,
+                      textColor:  PrimaryColor,
+                      text: 'back',
+                      onPress: (){
+                        controller.changeIndex(controller.index - 1);
 
-              }),
-            ),
+                      }
+                  ),
+
+                ),
+              ),
+
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Container(
+                  padding:EdgeInsets.all(20),
+                  width: 180,
+                  height: 100,
+                  child: CustomButton(
+                    text: 'Next',
+                     onPress: (){
+                    controller.changeIndex(controller.index + 1);
+
+                  }
+                  ),
+
+                ),
+              ),
+
+
+            ],
           ),
         ],
       ),

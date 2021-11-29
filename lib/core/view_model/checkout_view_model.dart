@@ -12,7 +12,11 @@ class CheckoutViewModel extends GetxController{
   String Street1 , Street2 , city ;
   GlobalKey <FormState>formState = GlobalKey();
   void changeIndex (int i ){
-    if(i == 1){
+    if(i == 0 || i < 0 ){
+      _pages == Pages.DeliveryTime;
+      index == i ;
+    }
+    else if(i == 1){
       _pages = Pages.AddAddress;
       _index =i;
 
@@ -29,6 +33,8 @@ class CheckoutViewModel extends GetxController{
     else if (i == 3)
       {
         Get.to(ControllView());
+        _pages = Pages.DeliveryTime;
+        _index  = 0 ;
       }
     update();
   }

@@ -7,10 +7,12 @@ class CustomButton extends StatelessWidget {
   final String text;
   final Color color;
   final Function onPress;
+  final Color textColor;
   CustomButton({
     @required this.onPress,
     this.text = 'Write text ',
     this.color = PrimaryColor,
+    this.textColor = Colors.white ,
   });
 
   @override
@@ -21,11 +23,12 @@ class CustomButton extends StatelessWidget {
       ),
       padding: EdgeInsets.all(10),
       onPressed: onPress,
-      color: PrimaryColor,
+      color: color,
       child: CustomText(
         alignment: Alignment.center,
         text: text,
-        color: Colors.white,
+        color: textColor,
+
       ),
     );
   }
