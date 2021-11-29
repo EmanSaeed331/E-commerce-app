@@ -1,5 +1,6 @@
 import 'package:ecommerce/constant.dart';
 import 'package:ecommerce/core/view_model/cart_view_model.dart';
+import 'package:ecommerce/core/view_model/checkout_view_model.dart';
 import 'package:ecommerce/view/widgets/custom_text.dart';
 import 'package:ecommerce/view/widgets/custome_sizedbox.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +17,14 @@ class Summary extends StatelessWidget {
               height: 40,
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.only(
+                top: 20,
+                right: 20,
+                left: 20,
+              ),
               child: Container(
 
-                height: 350,
+                height: 250,
                  child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => Container(
@@ -70,6 +75,24 @@ class Summary extends StatelessWidget {
                 ),
               ),
             ),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomText(
+                  text: 'Shipping Address',
+                  fontSize: 24,
+              ),
+            ),
+            GetBuilder<CheckoutViewModel>(builder: (controller) =>
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomText(
+                    fontSize: 24,
+                    color:Colors.grey,
+                    text: '${controller.Street1 + ' , ' + controller.Street2 + ' , ' + controller.city}',
+
+            ),
+                ))
           ],
         ),
       ),
