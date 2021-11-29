@@ -2,8 +2,13 @@ import 'package:ecommerce/constant.dart';
 import 'package:ecommerce/core/view_model/control_view_model.dart';
 import 'package:ecommerce/core/view_model/home_view_model.dart';
 import 'package:ecommerce/view/details_view.dart';
+import 'package:ecommerce/view/devices_category_product.dart';
+import 'package:ecommerce/view/gadgets_category_product.dart';
+import 'package:ecommerce/view/gaming_category_product.dart';
 import 'package:ecommerce/view/widgets/custom_text.dart';
 import 'package:ecommerce/view/widgets/custome_sizedbox.dart';
+import 'package:ecommerce/view/men_products_view.dart';
+import 'package:ecommerce/view/women_category_product.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -97,8 +102,30 @@ class HomeView extends StatelessWidget {
                     width: 60,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child:
-                          Image.network(controller.categoryMddel[index].image),
+                      child: GestureDetector(
+                        onTap: (){
+                          if (controller.categoryMddel[index].name == 'Men')
+                          {
+                            Get.to(MenCategoryProducts());
+
+                          }
+                          else if(controller.categoryMddel[index].name == 'Women')
+                          {
+                            Get.to(WomenCategoryProducts());
+                          }
+                          else if(controller.categoryMddel[index].name == 'Gadgets')
+                          {
+                            Get.to(GadgetsCategoryProducts());
+                          }  else if(controller.categoryMddel[index].name == 'Gaming')
+                          {
+                            Get.to(GamingCategoryProducts());
+                          }  else if(controller.categoryMddel[index].name == 'Devices')
+                          {
+                            Get.to(DevicesCategoryProducts());
+                          }
+                        },
+                          child: Image.network(
+                              controller.categoryMddel[index].image)),
                     ),
                   ),
                 ),
@@ -127,21 +154,18 @@ class HomeView extends StatelessWidget {
               return Container(
                 width: MediaQuery.of(context).size.width * .4,
                 child: Column(
-
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-
                   children: [
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Get.to(DetailsView(
                           model: controller.productModel[index],
-
                         ));
                       },
                       child: Container(
-                       // width: 100,
-                         width: MediaQuery.of(context).size.width * .4,
+                        // width: 100,
+                        width: MediaQuery.of(context).size.width * .4,
                         child: Image.network(
                           controller.productModel[index].image,
                           fit: BoxFit.fill,
@@ -161,7 +185,6 @@ class HomeView extends StatelessWidget {
                       width: 40,
                       color: Colors.grey,
                       overflow: TextOverflow.ellipsis,
-
                     ),
                     SizedBox(height: 3),
                     CustomText(

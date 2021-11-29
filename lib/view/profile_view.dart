@@ -178,7 +178,7 @@ class ProfileView extends StatelessWidget {
                 Container(
                   child: FlatButton(
                     onPressed: (){
-
+                      controller.Signout();
                     },
                     child: ListTile(
                       title:CustomText(
