@@ -106,7 +106,7 @@ class MenCategoryProducts extends StatelessWidget {
     return GetBuilder<CategoryViewModel>(
       builder:(controller) => Container (
         width:  double.infinity,
-        //height: 600,
+        height: 600,
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: GridView.builder (
@@ -121,9 +121,9 @@ class MenCategoryProducts extends StatelessWidget {
                 return Column(
                   children: [
                     Container(
-                    // width: MediaQuery.of(context).size.width * .4,
+                     width: MediaQuery.of(context).size.width * .4,
 
-                     // alignment: Alignment.center,
+                      alignment: Alignment.center,
                       child:
                         Image.asset('assets/images/Image.png' ,
                         fit: BoxFit.fill,
