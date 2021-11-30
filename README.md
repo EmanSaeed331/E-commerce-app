@@ -6,6 +6,7 @@
   ## - cart Screen 
   ## - category screen 
   ## - profile screen 
+  ## - checkout screen 
   
   # Login done by  multiple ways like : 
   ##  - Facebook Login 
@@ -25,6 +26,7 @@
   ##  category screen  
   ### - shows each category that have details of each category
   ![262867410_690923161859045_4068416946898829180_n](https://user-images.githubusercontent.com/36940678/143999134-eee5ed52-8a0e-427a-b9c6-53e07204af97.jpg)
+  
 
   ## cart screen 
   ### - show the added product to cart 
@@ -34,5 +36,12 @@
   ### - show the user details and notifications and order history 
   ![261749741_1288282918266493_6396792543733504287_n](https://user-images.githubusercontent.com/36940678/143999190-65004ec5-ed89-49c4-99b7-f80b00a523a8.jpg)
 
-  
+  ## - checkout screen 
+  ### - show the product details and shipping details 
+  ![261934613_401521661654482_6710103782226150847_n (1)](https://user-images.githubusercontent.com/36940678/144000503-eb2a6c55-c2d4-480e-a3d8-4f51ade20c4c.jpg)
+![262418602_434497621686270_6834991532276465790_n](https://user-images.githubusercontent.com/36940678/144000505-ecd30cdb-914a-4f67-a99f-af84c3a18759.jpg)
+![262468492_3184290035137732_6027519153320023044_n](https://user-images.githubusercontent.com/36940678/144000509-5411b14c-d852-4f50-844b-29e48e97a76f.jpg)
+![262522870_1124770924928269_180498149220301734_n](https://user-images.githubusercontent.com/36940678/144000510-e870a41d-2163-4a2c-b28f-d2e0dad2d6a2.jpg)
+
+
 
