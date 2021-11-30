@@ -1,4 +1,7 @@
 # ecommerce is a flutter application that depends on firebase as backend services 
+## Used packeges are 
+### - Get , - firebase_auth , - cloud_firestore , - SharedPrefrences  ,   google_sign_in ,  firebase_core , flutter_facebook_auth , sqflite , flutter_svg , status_change
+
 ## it consists of : 
   ## - Login screen 
   ## - Register Screen
