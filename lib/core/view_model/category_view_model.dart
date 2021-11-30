@@ -17,10 +17,10 @@ class CategoryViewModel extends GetxController{
 
   getCategoryProduct()async{
     _loading.value = true;
-    CategoryServices().getMenCategory().then((value)  {
-      for(int i =0 ; i <= value.length ; i++)
+    CategoryServices().getMenCategory().then((value)  async {
+      for(int i =0 ; i < value.length ; i++)
       {
-        _categoryProductModel.add(CategoryProductModel.fromJson(value[i].data()));
+       await  _categoryProductModel.add(CategoryProductModel.fromJson(value[i].data()));
          _loading.value = false;
 
         }
