@@ -33,7 +33,6 @@
   #### - empty cart
   ![262802697_193496219641143_7799490108505970472_n](https://user-images.githubusercontent.com/36940678/143999161-0d87a8da-be5e-41bb-9e84-013eea238c84.jpg)
   #### - products cart
-
   ![262468492_3184290035137732_6027519153320023044_n](https://user-images.githubusercontent.com/36940678/144000774-7a5520be-90e3-4f58-946b-5baeb8a61509.jpg)
 
 
@@ -41,8 +40,15 @@
   ### - show the user details and notifications and order history 
   ![261749741_1288282918266493_6396792543733504287_n](https://user-images.githubusercontent.com/36940678/143999190-65004ec5-ed89-49c4-99b7-f80b00a523a8.jpg)
 
-  ## - checkout screen 
-  ### - show the product details and shipping details 
+  ##  - checkout screen 
+  ### - show the product details and shipping details
+  ![261773571_4543275072436203_6053761610882460179_n](https://user-images.githubusercontent.com/36940678/144001391-e11fb7c4-8846-4017-bca6-8c86feb13898.jpg)
+![261934613_401521661654482_6710103782226150847_n](https://user-images.githubusercontent.com/36940678/144001394-89c70f27-c2ab-4a1e-804a-9a85f1e80e6c.jpg)
+![262522870_1124770924928269_180498149220301734_n](https://user-images.githubusercontent.com/36940678/144001399-b6428f98-f2fd-48b4-8c87-00ff5c309dd4.jpg)
+![262615081_858123984871693_3534021179587154761_n](https://user-images.githubusercontent.com/36940678/144001404-9462611c-90cc-430c-969c-291ff487970b.jpg)
+
+  
+  
 
 
 
