@@ -5,10 +5,8 @@ import 'package:ecommerce/view/widgets/custom_text.dart';
 import 'package:ecommerce/view/widgets/custome_sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:path/path.dart';
 
 class MenCategoryProducts extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +25,7 @@ class MenCategoryProducts extends StatelessWidget {
                  ),
                  child: CustomText(
                    text: 'Men',
-                   fontSize: 20,
+                   fontSize: 17,
                  ),
                ),
             //  MenProductList(),
