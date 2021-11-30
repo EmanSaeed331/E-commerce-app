@@ -29,8 +29,11 @@
   
 
   ## cart screen 
-  ### - show the added product to cart 
+  ###  - show the added product to cart
+  #### - empty cart
   ![262802697_193496219641143_7799490108505970472_n](https://user-images.githubusercontent.com/36940678/143999161-0d87a8da-be5e-41bb-9e84-013eea238c84.jpg)
+  #### - products cart
+
   ![262468492_3184290035137732_6027519153320023044_n](https://user-images.githubusercontent.com/36940678/144000774-7a5520be-90e3-4f58-946b-5baeb8a61509.jpg)
 
 
