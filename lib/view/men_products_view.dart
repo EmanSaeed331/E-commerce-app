@@ -28,8 +28,8 @@ class MenCategoryProducts extends StatelessWidget {
                    fontSize: 17,
                  ),
                ),
-            //  MenProductList(),
-              _listViewProduct(),
+             MenProductList(),
+             // _listViewProduct(),
 
             ],
           ),

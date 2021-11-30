@@ -43,9 +43,9 @@ class ProfileView extends StatelessWidget {
                         // )
                         image: DecorationImage(
                           image: controller.userModel == null
-                              ? const AssetImage('assets/images/avatar.png')
+                              ? const AssetImage('assets/images/Petra.jpg')
                               :controller.userModel.pic == 'default'
-                                ? const AssetImage('assets/images/avatar.png')
+                                ? const AssetImage('assets/images/Petra.jpg')
                                 :NetworkImage(
                                     controller.userModel.pic,
                                      ),
